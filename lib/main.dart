@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scan_app/bloc/auth_bloc.dart';
-import 'package:scan_app/screen/homepage.dart';
+import 'package:scan_app/screen/homepage/homepage.dart';
 import 'package:scan_app/screen/login.dart';
 
 void main() {

@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:scan_app/models/qrModel.dart';
+import 'package:scan_app/screen/scanpage.dart';
 
-class HomepageScreen extends StatelessWidget {
+class HomepageScreen extends StatefulWidget {
+  @override
+  _HomepageScreenState createState() => _HomepageScreenState();
+}
+
+class _HomepageScreenState extends State<HomepageScreen> {
+  static dynamic prodotti;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +42,7 @@ class HomepageScreen extends StatelessWidget {
               padding: EdgeInsets.all(20),
               child: Row(
                 children: [
-                  Text('Prodotti vari'),
+                  Text('$prodotti'),
                 ],
               ),
             ),
@@ -79,7 +85,12 @@ class HomepageScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => QrViewExample()));
-            print("OOOOOOOOOOOOOO ${result.code}");
+            if (result != null) {
+              setState(() {
+                prodotti = result.code;
+              });
+              print("OOOOOOOOOOOOOO ${result.code}");
+            }
           },
           child: Icon(Icons.camera_alt_outlined)),
     );

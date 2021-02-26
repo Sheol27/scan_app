@@ -157,6 +157,7 @@ class _QrViewExampleState extends State<QrViewExample> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+        controller.stopCamera();
         Navigator.maybePop(context, result);
       });
     });
