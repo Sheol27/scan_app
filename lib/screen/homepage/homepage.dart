@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:scan_app/screen/homepage/item_template.dart';
 import 'package:scan_app/screen/scanpage.dart';
 
 class HomepageScreen extends StatefulWidget {
@@ -88,6 +89,10 @@ class _HomepageScreenState extends State<HomepageScreen> {
             if (result != null) {
               setState(() {
                 prodotti = result.code;
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        ItemTemplate());
               });
               print("OOOOOOOOOOOOOO ${result.code}");
             }
