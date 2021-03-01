@@ -10,6 +10,7 @@ class HomepageScreen extends StatefulWidget {
 
 class _HomepageScreenState extends State<HomepageScreen> {
   static dynamic prodotti;
+  static List recenti = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,56 +29,25 @@ class _HomepageScreenState extends State<HomepageScreen> {
       ),
       body: Column(
         children: [
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Text('Prodotti vari'),
-                ],
+          for (var text in recenti)
+            Card(
+              child: InkWell(
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          ItemTemplate());
+                },
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  child: Row(
+                    children: [
+                      Text(text),
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Text('$prodotti'),
-                ],
-              ),
-            ),
-          ),
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Text('Prodotti vari'),
-                ],
-              ),
-            ),
-          ),
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Text('Prodotti vari'),
-                ],
-              ),
-            ),
-          ),
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Text('Prodotti vari'),
-                ],
-              ),
-            ),
-          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -89,6 +59,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
             if (result != null) {
               setState(() {
                 prodotti = result.code;
+                recenti.add('${result.code}');
                 showDialog(
                     context: context,
                     builder: (BuildContext context) =>
